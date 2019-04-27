@@ -1,4 +1,4 @@
-# JavaFX
+# Teste tes reflexes en JavaFX
 Ce programme est entièrement basé sur du JavaFX
 
 Le principe du programme consiste à tester vos réflexes.
