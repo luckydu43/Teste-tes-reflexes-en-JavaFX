@@ -30,10 +30,6 @@ import javafx.util.Duration;
 public class TheReflex extends Application {
 
 	/**
-	 * Variables publiques.
-	 */
-
-	/**
 	 * Variables privées.
 	 */
 	private Stage fenetre;
@@ -45,6 +41,7 @@ public class TheReflex extends Application {
 	private final EventHandler<KeyEvent> keyEventHandler = event -> actionTouche(event);
 	private final ArrayList<Line> damier = new ArrayList<Line>();
 	private final double RAYON_CERCLE_MIN;
+
 	/**
 	 * CONSTANTES.
 	 */
@@ -66,14 +63,17 @@ public class TheReflex extends Application {
 	public TheReflex() {
 		super();
 
-		// Calcul de la valeur minimale du cercle. 20 par défaut. Eclipse marque une des
-		// 2 portions en "dead code" selon la valeur de NOMBRE_DE_CASES_PAR_LIGNE.
-		// Normal : ce traitement conditionnel est purement basé sur des constantes !
+		/**
+		 * Calcul de la valeur minimale du cercle. 20 par défaut. Eclipse marque une des
+		 * 2 portions en "dead code" selon la valeur de NOMBRE_DE_CASES_PAR_LIGNE.
+		 * Normal : ce traitement conditionnel est purement basé sur des constantes !
+		 */
 		if (20 < ((TheReflex.LONGITUDE_MAX / TheReflex.NOMBRE_DE_CASES_PAR_LIGNE) / 2)) {
 			this.RAYON_CERCLE_MIN = 20;
 		} else {
 			this.RAYON_CERCLE_MIN = (TheReflex.LONGITUDE_MAX / TheReflex.NOMBRE_DE_CASES_PAR_LIGNE) / 2;
 		}
+
 		/**
 		 * Définition du damier. Pour éviter trop d'instanciations, on définit ces
 		 * lignes dans une liste finale.
@@ -179,8 +179,9 @@ public class TheReflex extends Application {
 	 * l'opacité de la couleur, le rayon et la position du cercle
 	 */
 	private void creerScene() {
-		Group vGroupe = new Group();
-		Scene scene = new Scene(vGroupe);
+		/**
+		 * Création du cercle
+		 */
 		double rayonCercleGenere = RANDOM.nextInt(
 				new Double(TheReflex.RAYON_CERCLE_MAX - this.RAYON_CERCLE_MIN + 1).intValue()) + this.RAYON_CERCLE_MIN;
 
@@ -210,6 +211,9 @@ public class TheReflex extends Application {
 		double opaciteCercleNoir = (RANDOM.nextDouble() * (1 - TheReflex.OPACITE_MINIMUM) + TheReflex.OPACITE_MINIMUM);
 		Circle cercleNoir = new Circle(longitudeCercleGenere, latitudeCercleGenere, rayonCercleGenere,
 				Color.web("black", opaciteCercleNoir));
+
+		Group vGroupe = new Group();
+		Scene scene = new Scene(vGroupe);
 		vGroupe.getChildren().addAll(cercleNoir, this.compteur, this.boutonTechnique);
 		vGroupe.getChildren().addAll(this.damier);
 		this.fenetre.setScene(scene);
@@ -232,7 +236,6 @@ public class TheReflex extends Application {
 	 * @throws Exception
 	 */
 	private void actionTouche(KeyEvent keyEvent) {
-		keyEvent.consume();
 		System.out.println(this.compteur.getText());
 		this.creerScene();
 		this.splitTime = Duration.ZERO;
