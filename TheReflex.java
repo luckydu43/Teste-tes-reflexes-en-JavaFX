@@ -50,10 +50,12 @@ public class TheReflex extends Application {
 	 */
 	private static final Random RANDOM = new Random();
 	private static final double OPACITE_MINIMUM = 0.2;
-	private static final int TEMPS_ATTENTE_MAX_MILLIS = 1;
+	private static final int TEMPS_ATTENTE_MAX_MILLIS = 5000;
 	private static final int NOMBRE_DE_CASES_PAR_LIGNE = 3;
 	// 600 est parfait pour gérer une quantité énorme de cases. C'est divisible par
 	// pas mal de nombres ;-)
+	// Attention, l'offset de la taille de la fenêtre peut varier si tu changes
+	// cette valeur. Cf lignes 140 et 141.
 	private static final double LONGITUDE_MAX = 600;
 	private static final double LATITUDE_MAX = TheReflex.LONGITUDE_MAX;
 	private static final double RAYON_CERCLE_MAX = (TheReflex.LONGITUDE_MAX / TheReflex.NOMBRE_DE_CASES_PAR_LIGNE) / 2;
