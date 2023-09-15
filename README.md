@@ -23,4 +23,6 @@ Je vous ai prévenu.
 
 Il reste un bug : Le spam permet de tricher apacher. Je n'ai pas trouvé le moyen de corriger ça.
 
+TODO : le faire tourner sur une JRE
+https://stackoverflow.com/questions/53453212/how-to-deploy-a-javafx-11-desktop-application-with-a-jre
 
